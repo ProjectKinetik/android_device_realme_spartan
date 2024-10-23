@@ -35,15 +35,6 @@ SECTION=
 
 while [ "${#}" -gt 0 ]; do
     case "${1}" in
-        --only-common)
-            ONLY_COMMON=true
-            ;;
-        --only-firmware)
-            ONLY_FIRMWARE=true
-            ;;
-        --only-target)
-            ONLY_TARGET=true
-            ;;
         -n | --no-cleanup)
             CLEAN_VENDOR=false
             ;;
@@ -123,9 +114,7 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${SIGSCAN}" -p "23 0A 00 94" -P "1F 20 03 D5" -f "${2}"
             ;;
-        *)
-            return 1
-            ;;
+
     esac
 
     return 0
